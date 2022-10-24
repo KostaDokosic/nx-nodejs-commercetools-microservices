@@ -15,3 +15,13 @@ services:
       dockerfile: ./apps/auth-svc/Dockerfile
     volumes:
       - ./apps/auth-svc:/app/apps/auth-svc
+
+  fe:
+    container_name: fe
+    build:
+      context: ./
+      dockerfile: ./apps/fe/Dockerfile
+    volumes:
+      - ./apps/fe:/app/apps/fe
+    ports:
+      - '4200:4200'
