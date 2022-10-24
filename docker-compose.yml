@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:1.23
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+
+  auth-svc:
+    container_name: auth-svc
+    build:
+      context: ./
+      dockerfile: ./apps/auth-svc/Dockerfile
+    volumes:
+      - ./apps/auth-svc:/app/apps/auth-svc
